@@ -1,0 +1,53 @@
+﻿@model Coupons;
+
+<form asp-action="CreateCoupon" asp-controller="Coupon" method="post" id="couponForm" novalidate>
+    <div class="modal-body">
+        <div>
+            <label class="form-label mt-4">Coupon Code</label>
+            <div class="form-floating">
+                <input asp-for="CouponCode" class="form-control" id="floatingCode" required>
+                <label asp-for="CouponCode">Enter coupon code here.</label>
+                <div class="invalid-feedback">Please enter a coupon code.</div>
+            </div>
+
+            <label class="form-label mt-4">Discount Amount</label>
+            <div class="form-floating">
+                <input asp-for="DiscountAmount" class="form-control" id="floatingDisAmount" autocomplete="off" required>
+                <label asp-for="DiscountAmount">Enter discount amount here.</label>
+                <div class="invalid-feedback">Please enter a discount amount.</div>
+            </div>
+
+            <label class="form-label mt-4">Minimum Amount</label>
+            <div class="form-floating">
+                <input asp-for="MinAmount" class="form-control" id="floatingMinAmount" autocomplete="off" required>
+                <label asp-for="MinAmount">Enter minimum amount here.</label>
+                <div class="invalid-feedback">Please enter a minimum amount.</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-save2-fill me-2"></i>Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Cancel</button>
+    </div>
+</form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('couponForm');
+        var modal = new bootstrap.Modal(document.getElementById('createCouponModal'));
+
+        modal._element.addEventListener('hide.bs.modal', function () {
+            form.classList.remove('was-validated');
+            form.reset();
+        });
+
+        form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+</script>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Coupons>
+@using System.Globalization
+
+<div class="card border-primary mt-5">
+    <div class="card-header d-flex">
+        <h4 class="card-title">Coupon List</h4>
+        <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#createCouponModal">
+            <i class="bi bi-patch-plus"></i> Create New Coupon
+        </button>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">Coupon Code</th>
+                    <th scope="col">Discount Amount</th>
+                    <th scope="col">Minimum Amount</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-light">
+                        <td scope="row">@item.CouponCode</td>
+                        <td>@((item.DiscountAmount).ToString("C", new CultureInfo("en-IN")))</td>
+                        <td>@((item.MinAmount).ToString("C", new CultureInfo("en-IN")))</td>
+                        <td>
+                            <a class="badge rounded-pill bg-danger" style="cursor: pointer" asp-route-couponId="@item.CouponId" data-bs-toggle="modal" data-bs-target="#deleteCouponModal">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="createCouponModal" tabindex="-1" aria-labelledby="createCouponModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header card-header">
+                <h5 class="modal-title" id="createCouponModalLabel">Create New Coupon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @await Html.PartialAsync("_CreateCouponForm", new Coupons())
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteCouponModal" tabindex="-1" aria-labelledby="deleteCouponModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("_DeleteCoupon", new Coupons())
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and dependencies (Popper.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>

@@ -1,0 +1,6 @@
+@Pizzario.Services.CouponApi_HostAddress = http://localhost:5278
+
+GET {{Pizzario.Services.CouponApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
