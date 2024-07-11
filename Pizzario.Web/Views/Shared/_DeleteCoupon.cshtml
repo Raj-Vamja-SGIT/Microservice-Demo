@@ -1,4 +1,4 @@
-﻿@model Coupons;
+﻿@* @model Coupons;
 
 <form asp-action="DeleteCoupon" asp-controller="Coupon">
     <input asp-for="CouponId" hidden/>
@@ -11,4 +11,20 @@
         <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill me-2"></i>Delete</button>
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Cancel</button>
     </div>
-</form>
+</form> *@
+
+@model Coupons;
+
+@using (Html.BeginForm("DeleteCoupon", "Coupon", FormMethod.Post, new { @class = "my_form" }))
+{
+    <input asp-for="CouponId" hidden />
+    <div class="modal-body">
+        <div>
+            Are you sure you want to delete this coupon?
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill me-2"></i>Delete</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Cancel</button>
+    </div>
+}
