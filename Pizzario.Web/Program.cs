@@ -7,13 +7,27 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddHttpClient();
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHttpClient("PizzarioApi")
+        .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) => true
+        });
+}
+else
+{
+    builder.Services.AddHttpClient();
+}
+//builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<ICouponService, CouponService>();
 
 builder.Services.AddScoped<IBaseService, BaseService>();
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 StaticDetails.CouponApiBase = builder.Configuration["ServiceUrls:CouponApi"];
+StaticDetails.ProductApiBase = builder.Configuration["ServiceUrls:ProductApi"];
 
 var app = builder.Build();
 

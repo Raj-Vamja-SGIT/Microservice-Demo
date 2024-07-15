@@ -1,0 +1,62 @@
+﻿@model Products;
+
+<form asp-action="CreateProduct" asp-controller="Product" method="post" id="productForm" novalidate>
+    <div class="modal-body">
+        <div>
+            <label class="form-label mt-4">Product Name</label>
+            <div class="form-floating">
+                <input asp-for="ProductName" class="form-control" id="productName" required>
+                <label asp-for="ProductName">Enter product name here.</label>
+                <div class="invalid-feedback">Please enter a product name.</div>
+            </div>
+
+            <label class="form-label mt-4">Price</label>
+            <div class="form-floating">
+                <input asp-for="Price" class="form-control" id="price" autocomplete="off" required>
+                <label asp-for="Price">Enter Price here.</label>
+                <div class="invalid-feedback">Please enter a price.</div>
+            </div>
+
+            <label class="form-label mt-4">Description</label>
+            <div class="form-floating">
+                <input asp-for="Description" class="form-control" id="description" required>
+                <label asp-for="Description">Enter description here.</label>
+                <div class="invalid-feedback">Please enter a description.</div>
+            </div>
+
+            <label class="form-label mt-4">CategoryName</label>
+            <div class="form-floating">
+                <input asp-for="CategoryName" class="form-control" id="categoryName" required>
+                <label asp-for="CategoryName">Enter category name here.</label>
+                <div class="invalid-feedback">Please enter a category name.</div>
+            </div>
+
+           
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"><i class="bi bi-save2-fill me-2"></i>Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Cancel</button>
+    </div>
+</form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('productForm');
+        var modal = new bootstrap.Modal(document.getElementById('createProductModal'));
+
+        modal._element.addEventListener('hide.bs.modal', function () {
+            form.classList.remove('was-validated');
+            form.reset();
+        });
+
+        form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
+</script>

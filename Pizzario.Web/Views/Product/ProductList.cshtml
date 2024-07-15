@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Products>
+@using System.Globalization
+
+<div class="card border-primary mt-5">
+    <div class="card-header d-flex">
+        <h4 class="card-title">Product List</h4>
+        <button type="button" class="btn btn-primary btn-sm ms-auto" data-bs-toggle="modal" data-bs-target="#createProductModal">
+            <i class="bi bi-patch-plus"></i> Create New Product
+        </button>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="table-light">
+                        <td scope="row">@item.ProductName</td>
+                        <td scope="row">@item.CategoryName</td>
+                        <td scope="row">@item.Description</td>
+                        <td>@((item.Price).ToString("C", new CultureInfo("en-IN")))</td>
+                        <td>
+                            <a class="badge rounded-pill bg-danger" style="cursor: pointer" asp-route-productId="@item.ProductId" data-bs-toggle="modal" data-bs-target="#deleteProductModal" data-product-id="@item.ProductId">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header card-header">
+                <h5 class="modal-title" id="createProductModalLabel">Create New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @await Html.PartialAsync("_CreateProductForm", new Products())
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("_DeleteProduct", new Products())
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteProductModal = document.getElementById('deleteProductModal');
+        deleteProductModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Button that triggered the modal
+            var productId = button.getAttribute('data-product-id'); // Extract info from data-* attributes
+
+            var form = deleteProductModal.querySelector('form');
+            var input = form.querySelector('input[name="ProductId"]');
+            input.value = productId;
+        });
+    });
+</script>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS and dependencies (Popper.js) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
