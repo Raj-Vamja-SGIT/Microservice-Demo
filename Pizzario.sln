@@ -15,6 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzario.Services.CouponApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzario.Web", "Pizzario.Web\Pizzario.Web.csproj", "{0E020B40-0D34-4A3E-812E-A7B14C903A55}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzario.Services.ShoppingCartApi", "Pizzario.Services.ShoppingCartApi\Pizzario.Services.ShoppingCartApi.csproj", "{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzario.Services.ProductApi", "Pizzario.Services.ProductApi\Pizzario.Services.ProductApi.csproj", "{07BC43DB-F7C2-4CDE-A033-093BA33977A1}"
 EndProject
 Global
@@ -31,6 +32,10 @@ Global
 		{0E020B40-0D34-4A3E-812E-A7B14C903A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E020B40-0D34-4A3E-812E-A7B14C903A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E020B40-0D34-4A3E-812E-A7B14C903A55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07BC43DB-F7C2-4CDE-A033-093BA33977A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07BC43DB-F7C2-4CDE-A033-093BA33977A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07BC43DB-F7C2-4CDE-A033-093BA33977A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,6 +47,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B0365CD8-6592-4618-A4C5-2D23FA97011D} = {F6D60698-0EFA-4FB4-9EFC-8758AD94D15E}
 		{0E020B40-0D34-4A3E-812E-A7B14C903A55} = {733C5866-34E0-4E10-AF8A-4249329B1BA2}
+		{1E7D21B2-BDA8-4D3D-8BD2-D82B57615A3A} = {F6D60698-0EFA-4FB4-9EFC-8758AD94D15E}
 		{07BC43DB-F7C2-4CDE-A033-093BA33977A1} = {F6D60698-0EFA-4FB4-9EFC-8758AD94D15E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

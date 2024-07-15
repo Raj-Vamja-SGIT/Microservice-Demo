@@ -1,0 +1,6 @@
+@Pizzario.Services.ShoppingCartApi_HostAddress = http://localhost:5131
+
+GET {{Pizzario.Services.ShoppingCartApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
