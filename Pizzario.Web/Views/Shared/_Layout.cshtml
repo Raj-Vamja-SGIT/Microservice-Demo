@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Pizzario.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
     <link rel="stylesheet" href="~/Pizzario.Web.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -19,6 +20,7 @@
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
                 <div class="dropdown-menu" style="">
                     <a class="dropdown-item" asp-controller="Coupon" asp-action="CouponIndex">Coupon</a>
+                    <a class="dropdown-item" asp-controller="Product" asp-action="ProductList">Product</a>
                 </div>
             </li>
         </ul>
@@ -26,6 +28,7 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <partial name="_Notifications" />
         </main>
     </div>
 

@@ -1,0 +1,15 @@
+﻿@model Products;
+
+@using (Html.BeginForm("DeleteProduct", "Product", FormMethod.Post, new { @class = "my_form" }))
+{
+    <input asp-for="ProductId" hidden />
+    <div class="modal-body">
+        <div>
+            Are you sure you want to delete this product?
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill me-2"></i>Delete</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-x-square-fill me-2"></i>Cancel</button>
+    </div>
+}
