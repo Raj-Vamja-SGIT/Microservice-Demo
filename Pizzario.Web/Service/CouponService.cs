@@ -31,12 +31,18 @@ namespace Pizzario.Web.Service
             });
         }
 
-        public async Task<ResponseDto> GetAllCouponsAsync()
+        public async Task<ResponseDto> GetAllCouponsAsync(string baseUrl)
         {
+            //return await _baseService.SendAsync(new RequestDto()
+            //{
+            //    ApiType = StaticDetails.ApiType.GET,
+            //    Url = StaticDetails.CouponApiBase + "/api/CouponsAPI"
+            //});
+
             return await _baseService.SendAsync(new RequestDto()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CouponApiBase + "/api/CouponsAPI"
+                Url = $"{baseUrl}/coupons"
             });
         }
 

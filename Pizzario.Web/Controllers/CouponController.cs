@@ -15,8 +15,17 @@ namespace Pizzario.Web.Controllers
 
         public async Task<IActionResult> CouponIndex()
         {
+            //List<Coupons>? couponsList = new();
+            //ResponseDto? response = await _couponService.GetAllCouponsAsync();
+            //if (response != null && response.IsSuccess)
+            //{
+            //    couponsList = JsonConvert.DeserializeObject<List<Coupons>>(Convert.ToString(response.Result));
+            //}
+            //return View(couponsList);
+
             List<Coupons>? couponsList = new();
-            ResponseDto? response = await _couponService.GetAllCouponsAsync();
+            var baseUrl = "http://localhost:5092"; // Ocelot gateway URL
+            ResponseDto? response = await _couponService.GetAllCouponsAsync(baseUrl);
             if (response != null && response.IsSuccess)
             {
                 couponsList = JsonConvert.DeserializeObject<List<Coupons>>(Convert.ToString(response.Result));
@@ -27,6 +36,7 @@ namespace Pizzario.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCoupon(Coupons coupons)
         {
+            var baseUrl = "http://localhost:5092";
             if (ModelState.IsValid)
             {
                 try
@@ -48,7 +58,7 @@ namespace Pizzario.Web.Controllers
                     ModelState.AddModelError("", $"An error occurred: {ex.Message}");
                 }
             }
-            return View("CouponIndex", await _couponService.GetAllCouponsAsync());
+            return View("CouponIndex", await _couponService.GetAllCouponsAsync(baseUrl));
         }
 
         //[HttpDelete]
