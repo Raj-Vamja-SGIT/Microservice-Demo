@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Products>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -7,36 +9,41 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<div class="card border-primary my-5" style="max-width: 20rem; margin-left: 60px">
-    <div class="card-header">Margarita</div>
-    <div class="card-body">
-        <img src="~/margarita.jpg" alt="Margarita Pizza" style="min-width: 273px" />
-    </div>
-    <div class="card-footer">
-        <div class="d-flex">
-            <h6 class="card-title">₹ 399</h6>
-            <span class="badge rounded-pill bg-primary ms-auto">Secondary</span>
-        </div>
-        <div>
-            <p>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Des.
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                            <div class="accordion-body">
-                                <strong>Margherita pizza is known for its ingredients representing the colours of the Italian flag. These ingredients include red tomato sauce, white mozzarella and fresh green basil. When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created.s
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-sm-6 my-3 d-flex">
+            <div class="card border-primary" style="max-width: 20rem;">
+                <div class="card-header">@item.ProductName</div>
+                <div class="card-body">
+                    <img src="@Url.Content(item.ImageUrl)" alt="@item.ProductName" class="img-fluid" />
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex">
+                        <h6 class="card-title">₹ @item.Price</h6>
+                        <span class="badge rounded-pill bg-primary ms-auto">Pizza</span>
+                    </div>
+                    <div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Des.
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>@item.Description</strong>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <button class="btn btn-primary btn-sm mt-2" type="button" style="width: 100%;">
+                        Details
+                    </button>
                 </div>
-            </p>
+            </div>
         </div>
-        <button class="btn btn-primary btn-sm" type="button" style="min-width: 270px">
-            Details
-        </button>
-    </div>
+    }
 </div>

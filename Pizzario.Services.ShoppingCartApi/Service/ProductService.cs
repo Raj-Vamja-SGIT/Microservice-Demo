@@ -16,7 +16,7 @@ namespace Pizzario.Services.ShoppingCartApi.Service
         public async Task<IEnumerable<Product>> GetProducts()
         {
             var client = _httpClientFactory.CreateClient("Product");
-            var response = await client.GetAsync($"/api/product");
+            var response = await client.GetAsync($"/api/ProductAPI");
             var apiContet = await response.Content.ReadAsStringAsync();
             var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContet);
             if (resp.IsSuccess)

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pizzario.Services.ShoppingCartApi.Data;
+using Pizzario.Services.ShoppingCartApi.Service;
+using Pizzario.Services.ShoppingCartApi.Service.IService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddHttpClient("Product", u => u.BaseAddress =
 new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
