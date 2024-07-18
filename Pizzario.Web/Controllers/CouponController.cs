@@ -34,10 +34,12 @@ namespace Pizzario.Web.Controllers
                     ResponseDto response = await _couponService.CreateCouponAsync(coupons);
                     if (response.IsSuccess)
                     {
+                        TempData["success"] = "Copon created successfully!";
                         return RedirectToAction("CouponIndex");
                     }
                     else
                     {
+                        TempData["error"] = response?.Message;
                         ModelState.AddModelError("", "Failed to create coupon. Please try again.");
                     }
                 }
@@ -55,8 +57,13 @@ namespace Pizzario.Web.Controllers
             ResponseDto? response = await _couponService.DeleteCouponAsync(couponId);
             if (response != null && response.IsSuccess)
             {
+                TempData["success"] = "Copon deleted successfully!";
                 return RedirectToAction("CouponIndex");
 
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
             }
             return NotFound();
         }
