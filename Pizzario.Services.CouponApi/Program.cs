@@ -32,6 +32,13 @@ app.MapControllers();
 //ApplyMigration();
 app.Run();
 
+builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
+
 //void ApplyMigration()
 //{
 //    using (var scope = app.Services.CreateScope())
