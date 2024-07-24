@@ -1,91 +1,91 @@
-{
-  "Routes": [
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/coupons",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/coupons/{id}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI/GetCouponByCode/{code}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/coupons/code/{code}",
-      "UpstreamHttpMethod": [ "GET" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/coupons",
-      "UpstreamHttpMethod": [ "POST" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/coupons",
-      "UpstreamHttpMethod": [ "PUT" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/CouponsAPI/{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1001
-        }
-      ],
-      "UpstreamPathTemplate": "/deleteCoupons/{id}",
-      "UpstreamHttpMethod": [ "DELETE" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/ProductAPI",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 1002
-        }
-      ],
-      "UpstreamPathTemplate": "/products",
-      "UpstreamHttpMethod": [ "GET" ]
-    }
-  ]
-}
+//{
+//  "Routes": [
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/coupons",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI/{id}",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/coupons/{id}",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI/GetCouponByCode/{code}",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/coupons/code/{code}",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/coupons",
+//      "UpstreamHttpMethod": [ "POST" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/coupons",
+//      "UpstreamHttpMethod": [ "PUT" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/CouponsAPI/{id}",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1001
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/deleteCoupons/{id}",
+//      "UpstreamHttpMethod": [ "DELETE" ]
+//    },
+//    {
+//      "DownstreamPathTemplate": "/api/ProductAPI",
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": 1002
+//        }
+//      ],
+//      "UpstreamPathTemplate": "/products",
+//      "UpstreamHttpMethod": [ "GET" ]
+//    }
+//  ]
+//}
 
 //{
 //  "Routes": [
@@ -118,3 +118,24 @@
 //    "BaseUrl": "http://localhost:5092"
 //  }
 //}
+
+
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{everyone}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "coupons",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/{everyone}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8039"
+  }
+}

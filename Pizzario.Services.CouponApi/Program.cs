@@ -17,9 +17,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
+    builder.AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin();
 }));
 
 var app = builder.Build();
@@ -28,13 +28,12 @@ var app = builder.Build();
 //if (app.Environment.IsDevelopment())
 //{
 //}
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 app.UseCors("MyPolicy");
+app.UseAuthorization();
 
 app.MapControllers();
 //ApplyMigration();
